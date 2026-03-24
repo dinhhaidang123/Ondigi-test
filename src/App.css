@@ -96,3 +96,65 @@ main {
   border-radius: 6px;
   font-size: 14px;
 }
+
+.questions-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px solid #e0e0e0;
+}
+.section-header {
+  /*Đẩy tiêu đề sang bên trái và nút bấm sang tận cùng bên phải.*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.section-header h2 {
+  font-size: 20px;
+  color: #333;
+}
+.no-questions {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-style: italic;
+}
+.question-item {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #1a73e8;
+}
+.question-item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.btn-primary {
+  background: #1a73e8;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  /*Thay đổi con trỏ chuột thành hình bàn tay khi di chuyển vào nút, báo hiệu đây là thành phần có thể click được.*/
+  cursor: pointer;
+}
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  /*Thay đổi con trỏ chuột thành hình bàn tay khi di chuyển vào nút, báo hiệu đây là thành phần có thể click được.*/
+  cursor: pointer;
+  margin-top: 10px;
+}
