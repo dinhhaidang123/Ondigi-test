@@ -1,4 +1,6 @@
-function QuestionList({ questions, addQuestion, updateQuestion, deleteQuestion }) {
+import OptionList from './OptionList';
+import quizEditor from "./QuizEditor.jsx";
+function QuestionList({ questions, addQuestion, updateQuestion, deleteQuestion , addOption, updateOption, deleteOption ,toggleCorrectAnswer}) {
 
     return (
         <div className="questions-section">
@@ -50,6 +52,17 @@ function QuestionList({ questions, addQuestion, updateQuestion, deleteQuestion }
                                     onChange={(e) => updateQuestion(question.id, 'sortOrder', parseInt(e.target.value))}
                                 />
                             </div>
+                            <OptionList
+                                questionId={question.id}
+                                options={question.options}
+                                correctAnswers={question.correctAnswers}
+                                addOption={addOption}
+                                updateOption={updateOption}
+                                deleteOption={deleteOption}
+                                toggleCorrectAnswer={toggleCorrectAnswer}
+                            >
+
+                            </OptionList>
 
                             {/* Delete Button */}
                             <button

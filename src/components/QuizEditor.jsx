@@ -53,6 +53,60 @@ function QuizEditor() {
             ),
         });
     }
+    function addOption(questionId) {
+        const newOption ={
+            id: Date.now(),
+            value: '',
+            label: '',
+            sortOrder: 0
+        };
+        setQuiz(
+            {
+                ...quiz,
+                questions: quiz.questions.map((q)=> q.id === questionId ? {...q , options: [...q .options, newOption]}:q),
+            }
+        );
+    }
+
+    function updateOption(questionId, optionId, field , value ) {
+        setQuiz({
+            ...quiz,
+            questions: quiz.questions.map((q)=> q.id === questionId ? {
+                ...q,
+                options: q.options.map((opt)=> opt.id === optionId ? {...opt, [field]: value  } :opt ),
+            } :q ),
+        });
+    }
+
+    function deleteOption(questionId, optionId){
+        const confirmed = window.confirm("Are you sure you want to delete this option?");
+        if(confirmed){
+            setQuiz({
+                ...quiz,questions: quiz.questions.map((q)=> q.id ===questionId ? {
+                    ...q,
+                    options: q.options.filter((opt )=> opt.id !== optionId),
+                    // Xóa option value khỏi correctAnswers nếu có
+                    correctAnswers: q.correctAnswers.filter((ans)=> ans !== q.options.find((opt)=> opt.id ===optionId)?.value ),
+                } :q ),
+            });
+        }
+    }
+    // Toggle correct answer
+    function toggleCorrectAnswer(questionId, optionValue) {
+        setQuiz({
+            ...quiz,
+            questions: quiz.questions.map((q) =>
+                q.id === questionId
+                    ? {
+                        ...q,
+                        correctAnswers: q.correctAnswers.includes(optionValue)
+                            ? q.correctAnswers.filter((ans) => ans !== optionValue) // Bỏ chọn
+                            : [...q.correctAnswers, optionValue], // Thêm
+                    }
+                    : q
+            ),
+        });
+    }
     return(
         <div className="quiz-editor">
             <h1>Quiz Information</h1>
@@ -85,6 +139,10 @@ function QuizEditor() {
                 addQuestion={addQuestion}
                 updateQuestion={updateQuestion}
                 deleteQuestion={deleteQuestion}
+                addOption={addOption}
+                updateOption={updateOption}
+                deleteOption={deleteOption}
+                toggleCorrectAnswer={toggleCorrectAnswer}
             />
             {/*view jason*/}
             <div className={"preview"}>
