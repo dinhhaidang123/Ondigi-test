@@ -43,7 +43,7 @@ function OptionList({questionId, options, correctAnswers, addOption, updateOptio
                             <input
                                 type={"number"}
                                 placeholder={"enter sort order input"}
-                                value={options.sortOrder}
+                                value={option.sortOrder}
                                 onChange={(e)=> updateOption(questionId, option.id , 'sortOrder', parseInt(e.target.value))}
                             />
                         </div>

@@ -203,3 +203,45 @@ main {
 /* Nút bấm chung */
 .btn-secondary { background: #28a745; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
 .btn-delete-small { background: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+
+.export-import-section {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border-left: 5px solid #2196f3;
+}
+
+.export-import-section h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-export,
+.btn-import {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-export {
+  background-color: #2196f3;
+}
+
+.btn-import {
+  background-color: #4caf50;
+}
+

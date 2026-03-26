@@ -1,5 +1,6 @@
 import {useState} from "react";
 import QuestionList from "./QuestionList.jsx";
+import ImportExport from "./ImportExport.jsx";
 
 function QuizEditor() {
     const [quiz, setQuiz]= useState({
@@ -110,6 +111,7 @@ function QuizEditor() {
     return(
         <div className="quiz-editor">
             <h1>Quiz Information</h1>
+            <ImportExport quiz={quiz} setQuiz={setQuiz}/>
 
             {/*Nhập tên quiz*/}
             <div className="group">
