@@ -61,7 +61,7 @@ function QuizEditor() {
             id: Date.now(),
             value: '',
             label: '',
-            sortOrder: nextSortOrder+1
+            sortOrder: nextSortOrder
         };
         setQuiz(
             {
