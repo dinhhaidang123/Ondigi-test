@@ -28,7 +28,7 @@ function QuizEditor() {
             id : Date.now(),
             name: '',
             description:'',
-            sortOrder: quiz.questions.length +1,
+            sortOrder: quiz.questions.length + 1,
             options:[],
             correctAnswers:[]
         };
@@ -55,11 +55,13 @@ function QuizEditor() {
         });
     }
     function addOption(questionId) {
+        const currentQuestion = quiz.questions.find(q => q.id === questionId);
+        const nextSortOrder = currentQuestion ? currentQuestion.options.length + 1 : 1;
         const newOption ={
             id: Date.now(),
             value: '',
             label: '',
-            sortOrder: 0
+            sortOrder: nextSortOrder+1
         };
         setQuiz(
             {

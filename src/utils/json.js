@@ -3,6 +3,44 @@ export function exQuiz(quiz){
         alert("Please entern quiz name");
         return;
     }
+    if(!quiz.description||quiz.description.trim() === ''){
+        alert("Please entern quiz description");
+        return;
+    }
+    if(!quiz.questions||quiz.questions.length === 0){
+        alert("Please entern some questions");
+        return;
+    }
+    for(let i = 0 ;i < quiz.questions.length; i++){
+        const a = quiz.questions[i];
+        if(!a.options||a.options.length < 2){
+            alert("Please entern 2 options");
+            return;
+        }
+        if(!a.correctAnswers||a.correctAnswers.length === 0){
+            alert("Please entern select correct answer");
+            return;
+        }
+        if(!a.name||a.name.trim() ===''){
+            alert("Please entern question name ");
+            return;
+        }
+        if(!a.description||a.description.trim()===''){
+            alert("Please entern question description");
+            return;
+        }
+        for (let j = 0; j < a.options.length; j++){
+            const opt = a.options[j];
+            if (!opt.value||opt.value.trim() === '') {
+                alert(`There is a question with no value entered.`);
+                return;
+            }
+            if (!opt.label||opt.label.trim() === '') {
+                alert(`The question has no content.`);
+                return;
+            }
+        }
+    }
     const json = JSON.stringify(quiz, null , 2);
     const blob = new Blob ([json], { type: 'application/json'});
     const url = URL.createObjectURL(blob);
@@ -38,21 +76,23 @@ export function importQuiz(file, callback){
     reader.readAsText(file);
 }
 function validateQuiz(quiz) {
-    if(!quiz || typeof quiz !== 'object'){
+    if (!quiz || typeof quiz !== 'object') {
         return false;
     }
-    if(typeof quiz.name !== 'string'){
+    if (typeof quiz.name !== 'string') {
         return false;
     }
-    if(typeof quiz.description !== 'string'){
+    if (typeof quiz.description !== 'string') {
         return false;
     }
-    for(const question of quiz.questions){
-        if(!validateQuestion(question)){
+    for (const question of quiz.questions) {
+        if (!validateQuestion(question)) {
             return false;
         }
-        return true;
+
     }
+    return true;
+}
 function validateQuestion(question) {
         if(!question || typeof  question !=='object'){
             return false;
@@ -92,4 +132,3 @@ function validateOption(option) {
         }
     return true;
 }    
-}
