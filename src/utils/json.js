@@ -58,8 +58,23 @@ export function importQuiz(file, callback){
         alert("please select a json file");
         return;
     }
+    const reader = new FileReader();
+    reader.onload = (e) =>{
+        try{
+            const data = JSON.parse(e.target.result);
+            if(!validateQuiz(data)){
+                alert("Please check json file");
+                return;
+            }
+            callback(data);
+            alert('Quiz import success');
+        }
+        catch (error){
+            alert('invalid json file ');
+        }
+    };
 
-    
+    reader.readAsText(file);
 }
 function validateQuiz(quiz) {
     if (!quiz || typeof quiz !== 'object') {
