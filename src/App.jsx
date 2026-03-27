@@ -1,6 +1,6 @@
 import QuizEditor from "./components/QuizEditor.jsx";
 import QuestionList from "./components/QuestionList.jsx";
-import './App.css';
+import './styles/App.css';
 
 function App(){
 
@@ -12,7 +12,6 @@ function App(){
         </header>
         <main>
           <QuizEditor/>
-
         </main>
       </div>
   )
